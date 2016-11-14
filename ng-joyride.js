@@ -411,7 +411,7 @@
                     if (!template) {
                         return '';
                     }
-                    return $http.get(template, { cache: $templateCache });
+                    return $q.when($templateCache.get(template)) || $http.get(template, { cache: true });
                 }
 
                 function goToNext(interval) {
@@ -475,7 +475,7 @@
                     var curtain;
                     $fkEl = $('#ng-curtain');
                     if (shouldDrop) {
-                        if ($fkEl.size() === 0) {
+                        if ($fkEl.length === 0) {
                             $('body').append('<div id="ng-curtain" class="'+globalHardcodedCurtainClass+'"></div>');
                             $fkEl = $('#ng-curtain');
                             $fkEl.slideDown(1000);
