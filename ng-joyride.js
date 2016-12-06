@@ -256,7 +256,7 @@
                 var self = this;
                 this.scope.heading = this.heading;
                 this.scope.content = this.content;
-                $fkEl.html($compile(html.data)(this.scope));
+                $fkEl.html($compile(html)(this.scope));
 
                 if (this.hasReachedEndFn()) {
                     $('.nextBtn').text(this.finishBtnText);
